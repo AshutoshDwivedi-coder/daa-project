@@ -22,7 +22,8 @@ export default function RLTree() {
   const simulateAccess = async () => {
     try {
       const targetNode = [20, 30, 40, 50, 60, 70, 80][Math.floor(Math.random() * 7)];
-      const res = await axios.post('http://localhost:5000/api/tree/access', {
+      const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+      const res = await axios.post(`${apiUrl}/api/tree/access`, {
         treeState: treeData,
         accessPattern: [targetNode]
       });

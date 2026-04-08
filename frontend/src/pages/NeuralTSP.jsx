@@ -40,7 +40,8 @@ export default function NeuralTSP() {
     try {
       // Create absolute coords back for the API
       const reqNodes = nodes.map(n => ({ x: n.cx, y: n.cy }));
-      const res = await axios.post('http://localhost:5000/api/tsp/solve', {
+      const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+      const res = await axios.post(`${apiUrl}/api/tsp/solve`, {
         coordinates: reqNodes
       });
       
